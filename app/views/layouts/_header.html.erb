@@ -1,0 +1,21 @@
+
+ <header>
+   <div>
+     <nav>
+       <ul>
+         <% if logged_in? %>
+           <%= link_to "Perfil", current_user %>
+           <%= link_to "Configurações", edit_usuario_path(current_user) %>
+           <%= link_to "Posts", posts_path %>
+           <%= link_to "Usuários", usuarios_path %>
+           <%= link_to "Categorias", categoria_path %>
+           <%= link_to "Log out", logout_path, method: "delete" %>
+         <% else %>
+           <%= link_to "Log in", root_path %>
+           <%= link_to "Posts", posts_path %>
+           <%= link_to "Categorias", categoria_path %>
+         <% end %>
+       </ul>
+     </nav>
+   </div>
+ </header>

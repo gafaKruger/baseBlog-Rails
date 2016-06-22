@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listando Posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Autor</th>
+      <!--<th>Corpo</th>
+      <th>Usuario</th> -->
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.titulo %></td>
+        <td><%= link_to post.autor, post.usuario %></td>
+        <!-- <td><%= post.corpo %></td>
+        <td><%= post.usuario %></td> -->
+        <td><%= link_to 'Exibir Post', post %></td>
+        <% if logged_in? %>
+          <% if current_user.adm %>
+            <td><%= link_to 'Editar Post', edit_post_path(post) %></td>
+            <td><%= link_to 'Excluir Post', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
+       <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if logged_in? %>
+  <% if current_user.adm %>
+    <%= link_to 'Novo Post', new_post_path %>
+  <% end %>
+<% end %>

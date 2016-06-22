@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Comentario:</strong>
+  <%= @comentario_autenticado.comentario %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @comentario_autenticado.usuario %>
+</p>
+
+<%= link_to 'Edit', edit_comentario_autenticado_path(@comentario_autenticado) %> |
+<%= link_to 'Back', comentario_autenticados_path %>

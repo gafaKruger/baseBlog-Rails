@@ -1,0 +1,58 @@
+<%= form_for(@usuario) do |f| %>
+  <% if @usuario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@usuario.errors.count, "Erro!") %> prohibited this usuario from being saved:</h2>
+
+      <ul>
+      <% @usuario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome_completo %><br>
+    <%= f.text_field :nome_completo %>
+  </div>
+  <div class="field">
+    <%= f.label :apelido %><br>
+    <%= f.text_field :apelido %>
+  </div>
+  <div class="radio">
+    <%= f.label :sexo %> <br>
+    <%= f.label :Feminino %>
+    <%= f.radio_button :sexo, 'Feminino' %>
+    <%= f.label :Masculino %>
+    <%= f.radio_button :sexo, 'Masculino' %> <br>
+  </div>
+  <div class="field">
+    <br> <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :senha %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :confirmação_da_senha %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <% if current_user.adm %>
+    <div class="field">
+      <%= f.label :data_cadastro %><br>
+      <%= f.date_select :data_cadastro %>
+    </div>
+    <div class="radio">
+      <%= "Permissões de Usuário" %> <br>
+      <%= f.label :Padrão %>
+      <%= f.radio_button :adm, 'false', :checked => (!@usuario.adm) %>
+      <%= f.label :Administrador %>
+      <%= f.radio_button :adm, 'true', :checked => (@usuario.adm) %> <br>
+    </div>
+  <%end%>
+  <br>
+  <div class="actions">
+    <%= f.submit "Salvar Edição" %>
+  </div>
+<% end %>

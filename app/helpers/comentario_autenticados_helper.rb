@@ -1,0 +1,2 @@
+module ComentarioAutenticadosHelper
+end

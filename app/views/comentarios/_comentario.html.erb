@@ -1,0 +1,6 @@
+<p>
+  <strong> <%= h(comentario.autor) %> </strong> <br>
+  Postado há: <%= time_ago_in_words(comentario.created_at) %> <br>
+  <%= h(comentario.corpo) %>
+  <br/>
+</p>

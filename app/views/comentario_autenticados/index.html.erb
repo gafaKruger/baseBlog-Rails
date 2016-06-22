@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Comentario Autenticados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comentario</th>
+      <th>Usuario</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comentario_autenticados.each do |comentario_autenticado| %>
+      <tr>
+        <td><%= comentario_autenticado.comentario %></td>
+        <td><%= comentario_autenticado.usuario %></td>
+        <td><%= link_to 'Show', comentario_autenticado %></td>
+        <td><%= link_to 'Edit', edit_comentario_autenticado_path(comentario_autenticado) %></td>
+        <td><%= link_to 'Destroy', comentario_autenticado, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Comentario autenticado', new_comentario_autenticado_path %>

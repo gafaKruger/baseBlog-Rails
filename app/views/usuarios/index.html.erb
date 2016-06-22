@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listando Usuários</h1>
+
+<table>
+  <thead>
+    <tr>
+      <% if logged_in? %>
+        <% if current_user.adm %>
+          <th>ID</th>
+        <%end%>
+      <%end%>
+      <th>Nome completo</th>
+      <th>Apelido</th>
+      <th>Sexo</th>
+      <th>Email</th>
+      <th>Data cadastro</th>
+      <th>Administrador</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @usuarios.each do |usuario| %>
+      <tr>
+        <% if logged_in? %>
+          <% if current_user.adm %>
+            <td><%= usuario.id %></td>
+          <%end%>
+        <% end %>
+        <td><%= usuario.nome_completo %></td>
+        <td><%= usuario.apelido %></td>
+        <td><%= usuario.sexo %></td>
+        <td><%= usuario.email %></td>
+        <td><%= usuario.data_cadastro %></td>
+        <td><%= usuario.adm %></td>
+        <td><%= link_to 'Exibir Usuário', usuario %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if logged_in? %>
+  <% if current_user.adm %>
+    <%= link_to 'Cadastrar Novo Usuário', new_usuario_path %>
+  <%end%>
+<% end %>

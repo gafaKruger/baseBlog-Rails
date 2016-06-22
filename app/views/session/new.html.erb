@@ -1,0 +1,26 @@
+<h1>Iniciar Sessão</h1>
+
+<%= form_for :session, url: login_path do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Log in" %>
+    </div>
+
+  <!-- <%= link_to "Login com Facebook", "/auth/facebook" %> -->
+  <!-- <%= link_to "Login com Google+", '/auth/google_oauth2' %> -->
+  <!-- <%= link_to "Login com Twitter", email_twitter_path %> -->
+  <!-- <%= link_to "Login com Twitter", '/auth/twitter' %> -->
+  <!-- <%= link_to "Login com LinkedIn", '/auth/linkedin' %> -->
+
+
+  <p>Ainda não possui cadastro? <%= link_to "Cadastre-se agora!", new_usuario_path %></p>
+  <% end %>

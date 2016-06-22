@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<html>
+  <body>
+    <h3> Perfil de <%= @usuario.nome_completo %> </h3>
+    <p>
+      <strong>Nome completo:</strong>
+      <%= @usuario.nome_completo %>
+    </p>
+
+    <p>
+      <strong>Apelido:</strong>
+      <%= @usuario.apelido %>
+    </p>
+
+    <p>
+      <strong>Sexo:</strong>
+      <%= @usuario.sexo %>
+    </p>
+
+    <p>
+      <strong>Email:</strong>
+      <%= @usuario.email %>
+    </p>
+
+    <p>
+      <strong>Data cadastro:</strong>
+      <%= @usuario.data_cadastro %>
+    </p>
+
+    <p>
+      <strong>Administrador:</strong>
+      <%= @usuario.adm %>
+    </p>
+    <% if logged_in? %>
+    <% if current_user.adm %>
+    <strong>Editar Permissões de Usuário:</strong> <br>
+      <%= form_for(@usuario) do |f| %>
+        <div class="radio">
+          <%= f.label :Padrão %>
+          <%= f.radio_button :adm, 'false', :checked => (!@usuario.adm) %>
+          <%= f.label :Administrador %>
+          <%= f.radio_button :adm, 'true', :checked => (@usuario.adm) %> <br>
+        </div>
+        <div class="actions">
+          <br><%= f.submit "Salvar" %>
+        </div>
+      <% end %>
+    <%end%>
+    <%end%>
+
+    <%= link_to 'Voltar à lista de Usuários', usuarios_path %>
+    <% if logged_in? %>
+      <% if current_user == @usuario %>
+          | <%= link_to 'Editar', edit_usuario_path(current_user)  %>
+      <%end%>
+    <% end %>
+  </body>
+</html>

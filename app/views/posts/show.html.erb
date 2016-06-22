@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<% if logged_in? %>
+  <% if current_user.adm %>
+    <%= link_to 'Editar', edit_post_path(@post) %> |
+    <%= link_to 'Excluir', @post, method: :delete, data: { confirm: 'Tem Certeza?' } %> |
+  <% end %>
+<% end %>
+<%= link_to 'Voltar à lista de Posts', posts_path %>
+
+<p>
+  <strong>Título:</strong>
+  <%= @post.titulo %>
+</p>
+
+
+
+<p>
+  <strong>Autor:</strong>
+  <%= link_to @post.autor, @post.usuario %>
+</p>
+
+<p>
+  <strong>Corpo:</strong>
+  <%= @post.corpo %>
+</p>
+
+<!-- <p>
+  <strong>Usuario:</strong>
+  <%= @post.usuario %>
+</p>
+
+<strong>Novo Comentário:</strong>
+<%= form_for [@post, Comentario.new] do |f| %>
+  <p>
+    <% if logged_in? %>
+      <%= form_for [@comentario, ComentarioAutenticado.new] do |g| %>
+        <div class="radio">
+          <%= g.label :Autenticado %>
+          <%= g.radio_button :usuario, current_user %>
+          <%= g.label :Anônimo %>
+          <%= g.radio_button :usuario, nil %> <br>
+        </div>
+      <% end %>
+    <% else %>
+      <%= f.label :autor, 'Autor' %><br />
+      <%= f.text_area :autor %> <br>
+    <% end %>
+    <%= f.label :corpo, 'Comentário' %><br />
+    <%= f.text_area :corpo %>
+  </p>
+  <p><%= f.submit 'Adicionar Comentário' %></p>
+<% end %>
+
+<strong>Comentários Anteriores:</strong>
+<div id=“comentarios”>
+  <%= render :partial => @post.comentarios %>
+</div> -->
